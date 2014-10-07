@@ -1,0 +1,19 @@
+body{
+	display: flex;
+	display: -webkit-flex;
+	flex-direction: column;
+	align-content: center;
+}
+
+form{
+	margin: auto;
+}
+
+.strike {
+	-webkit-appearance: none;
+	text-decoration: line-through;
+	color: red;
+}
+.nostrike {
+	text-decoration: none;
+}
