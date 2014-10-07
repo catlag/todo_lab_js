@@ -72,7 +72,7 @@ var chkList = function(){
 
 
 crssList = function() {
-	var status 
+	
 	if (this.parentNode.parentNode.firstChild.className === "noStrike") {
 		this.parentNode.parentNode.firstChild.className = "strike";
 		this.innerText = "Undo";
