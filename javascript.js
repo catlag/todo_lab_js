@@ -1,29 +1,39 @@
 var myForm = document.getElementById("toDoForm");
 var list = document.getElementById("toDoList");
 
-
+// Adds eventlistener to submit button
 myForm.addEventListener("submit", function (event) {
 	event.preventDefault();	
 	var title = this.title.value;
 
-	var listItem = document.createElement("ul");
+// creates list, text, and buttons
+	var listItem = document.createElement("li");
+	var buttonDiv = document.createElement("div");
+	var row = document.createElement("div")
 	var text = document.createTextNode(title);
 	var btn1 = document.createElement("button");
-
 	var btn2 = document.createElement("button");
 
+// sets the text and class of buttons and list items
 	btn1.innerText="Done";
 	btn1.className = "check";
 	btn2.innerText="Delete";
 	btn2.className = "delete";
-	listItem.className = "nostrike";
+	row.className = "row";
+	buttonDiv.className = "buttonDiv";
+	listItem.className = "noStrike";
 
+// Adds list items and buttons to the list
 	listItem.appendChild(text);
-	listItem.appendChild(btn1);
-	listItem.appendChild(btn2);
-	list.appendChild(listItem);
+	buttonDiv.appendChild(btn1);
+	buttonDiv.appendChild(btn2);
+	row.appendChild(listItem);
+	row.appendChild(buttonDiv);
+	
+	list.appendChild(row);
+	
 
-	this.title.value = "";
+	this.title.value ="";
 	 dList();
 	 chkList();
  
@@ -31,7 +41,7 @@ myForm.addEventListener("submit", function (event) {
 
 });
 
-
+// adds an event listener to all buttons with the class of delete
 var dList = function(){
   var rmbutton = document.querySelectorAll(".delete");
   for (var i = 0; i < rmbutton.length; i++) {
@@ -39,13 +49,16 @@ var dList = function(){
 
   }
 };
-
+// deletes the list item 
 var rmList = function() {
-	console.log(this.parentNode);
+	console.log(this.parentNode.parentNode.firstChild);
+	this.parentNode.parentNode.firstChild.innerText = "";
 	this.parentNode.innerText = "";
-
+	
 };
 
+
+// adds an event listener to all buttons with the class of check
 var chkList = function(){
   var donebutton = document.querySelectorAll(".check");
   for (var i = 0; i < donebutton.length; i++) {
@@ -54,13 +67,17 @@ var chkList = function(){
   }
 };
 
+// switched between button classes and button name
+
+
 crssList = function() {
-	if (this.parentNode.className === "nostrike") {
-	this.parentNode.className = "strike";
-	console.log(this.parentNode);
-	}else  if (this.parentNode.className === "strike") {
-		this.parentNode.className = "nostrike";
-		console.log("yosudfoa");
+	var status 
+	if (this.parentNode.parentNode.firstChild.className === "noStrike") {
+		this.parentNode.parentNode.firstChild.className = "strike";
+		this.innerText = "Undo";
+	}else  if (this.parentNode.parentNode.firstChild.className === "strike") {
+		this.parentNode.parentNode.firstChild.className = "noStrike";
+		this.innerText = "Done";
 	}
 	};
 	
@@ -75,11 +92,3 @@ crssList = function() {
 
 
 
-// var check 
-
-var initaliaze = function(){
-   
-    
-};
-
-window.onload = initaliaze;
