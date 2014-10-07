@@ -51,9 +51,11 @@ var dList = function(){
 };
 // deletes the list item 
 var rmList = function() {
-	console.log(this.parentNode.parentNode.firstChild);
+	console.log(this.parentNode.parentNode);
 	this.parentNode.parentNode.firstChild.innerText = "";
-	this.parentNode.innerText = "";
+	this.parentNode.parentNode.remove();
+	// this.parentNode.parentNode.style.border = "none";
+	
 	
 };
 
